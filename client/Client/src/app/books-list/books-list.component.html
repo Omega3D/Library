@@ -1,0 +1,12 @@
+<h1>Books List</h1>
+<div class="card-container">
+    <div class="card" *ngFor="let book of books">
+        <li class="list">
+            <ul>Title: {{book.title}}</ul>
+            <ul>Description: {{book.description}}</ul>
+            <ul>Price: {{book.price}}</ul>
+            <ul>Author: {{book.authorName}}</ul>
+            <ul>Genre: {{book.genreName}}</ul>
+        </li>
+    </div>
+</div>
