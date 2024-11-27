@@ -8,8 +8,11 @@ namespace API.Data.Entities
         [Key]
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.Now;
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Subtotal { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Shipping { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Total { get; set; }
         public string DeliveryStatus { get; set; } = "Pending";
 

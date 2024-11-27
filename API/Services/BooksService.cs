@@ -22,6 +22,7 @@ namespace API.Services
                     Title = b.Title,
                     Genre = b.Genre,
                     Price = b.Price,
+                    ImagePath = b.ImagePath
                 }).ToListAsync();
 
             return books;
@@ -37,6 +38,7 @@ namespace API.Services
                 Title = b.Title,
                 Description = b.Description,
                 ISBN = b.ISBN,
+                Language = b.Language,
                 Genre = b.Genre,
                 Type = b.Type,
                 PublicationYear = b.PublicationYear,

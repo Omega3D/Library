@@ -8,6 +8,7 @@ namespace API.Data.Entities
         [Key]
         public int OrderItemId { get; set; }
         public int Quantity { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
         [ForeignKey("Order")]

@@ -1,5 +1,7 @@
 using API.Data;
+using API.Extensions;
 using API.Interfaces;
+using API.ServiceExtensions;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,8 +31,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+// Сервіси(ApplicationServiceExtension)
+builder.Services.AddApplicationServices();
 
-builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddIdentityServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -39,6 +43,7 @@ app.UseCors(MyAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

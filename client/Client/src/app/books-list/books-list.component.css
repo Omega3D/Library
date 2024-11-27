@@ -1,27 +1,57 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin: 35px;
-  }
-  
-  /* Style for individual cards */
-  .card {
-    width: 200px; /* Set a fixed width for the card */
-    border: 1px solid #ddd; /* Add a border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Padding inside the card */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for a 3D effect */
-    background-color: #f9f9f9; /* Light background */
-  }
-  
-  /* Ensure the list items don't have default bullet points */
-  .list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  /* Optional: Add some space between list items inside the card */
-  .list ul {
-    margin-bottom: 10px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 35px;
+  justify-content: left; /* Center the cards horizontally */
+}
+
+/* Style for individual cards */
+.card {
+  width: 220px; /* Set a fixed width for the card */
+  border: 1px solid #ddd; /* Add a border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Padding inside the card */
+  background-color: #fff; /* Light background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for a 3D effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  text-align: center; /* Center the text */
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-10px); /* Lift the card on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Image styling */
+.book-image {
+  width: 180px;
+  height: 280px;
+  object-fit: cover; /* Ensures the image is correctly cropped */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Book title styling */
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333; /* Dark text color */
+}
+
+/* Book genre styling */
+.book-genre {
+  font-size: 14px;
+  color: #666; /* Lighter color for genre */
+  margin: 5px 0;
+}
+
+/* Book price styling */
+.book-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff; /* Blue color for the price */
+  margin: 5px 0;
+}

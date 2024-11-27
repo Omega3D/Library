@@ -4,6 +4,7 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241124123930_AppUserCustomerBookLanguageProp")]
+    partial class AppUserCustomerBookLanguageProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +55,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("AppUsers", (string)null);
+                    b.ToTable("AppUsers");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Author", b =>
@@ -73,7 +76,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Book", b =>
@@ -128,7 +131,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Customer", b =>
@@ -166,7 +169,7 @@ namespace API.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Order", b =>
@@ -205,7 +208,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("ShipperId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("API.Data.Entities.OrderItem", b =>
@@ -234,7 +237,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Publisher", b =>
@@ -251,7 +254,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("PublisherId");
 
-                    b.ToTable("Publishers", (string)null);
+                    b.ToTable("Publishers");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Shipper", b =>
@@ -276,7 +279,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("ShipperId");
 
-                    b.ToTable("Shippers", (string)null);
+                    b.ToTable("Shippers");
                 });
 
             modelBuilder.Entity("AuthorBook", b =>
@@ -291,7 +294,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("BooksBookId");
 
-                    b.ToTable("AuthorBook", (string)null);
+                    b.ToTable("AuthorBook");
                 });
 
             modelBuilder.Entity("API.Data.Entities.Book", b =>

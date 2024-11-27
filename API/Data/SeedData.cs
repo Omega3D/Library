@@ -1,5 +1,6 @@
 ﻿using API.Data.Entities;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace API.Data
 {
@@ -11,44 +12,44 @@ namespace API.Data
             {
                 var authors = new List<Author>
                 {
-                    new Author { FirstName = "George", LastName = "Orwell" },
-                    new Author { FirstName = "Harper", LastName = "Lee" },
+                    new Author { FirstName = "Adam", LastName = "Kay" },
+                    new Author { FirstName = "Daniel", LastName = "Kahneman" }
                 };
 
                 var publishers = new List<Publisher>
                 {
-                    new Publisher { Country = "USA" },
-                    new Publisher { Country = "UK" }
+                    new Publisher { Country = "UK" },
+                    new Publisher { Country = "USA" }
                 };
 
                 var books = new List<Book>
                 {
                     new Book
                     {
-                        Title = "1984",
-                        Description = "A dystopian social science fiction novel.",
-                        ISBN = "9780451524935",
-                        Genre = "Fiction",
-                        Type = "Hardcover",
-                        PublicationYear = 1949,
-                        Price = 15,
-                        Quantity = 100,
-                        ImagePath = "/images/1984.jpg",
-                        Publisher = publishers[1],
+                        Title = "This is Going to Hurt",
+                        Description = "A hilarious and heartbreaking collection of stories from a former doctor.",
+                        ISBN = "9781509858637",
+                        Genre = "Biography",
+                        Type = "Paperback",
+                        PublicationYear = 2017,
+                        Price = 15.99m,
+                        Quantity = 10,
+                        ImagePath = "https://images-na.ssl-images-amazon.com/images/P/8874713290.01._SX180_SCLZZZZZZZ_.jpg",
+                        Publisher = publishers[0],
                         Authors = new List<Author> { authors[0] }
                     },
                     new Book
                     {
-                        Title = "To Kill a Mockingbird",
-                        Description = "A novel about racial injustice in the Deep South.",
-                        ISBN = "9780061120084",
-                        Genre = "Classic",
+                        Title = "Thinking, Fast and Slow",
+                        Description = "An exploration of the human mind and how it makes decisions.",
+                        ISBN = "9780141033570",
+                        Genre = "Psychology",
                         Type = "Paperback",
-                        PublicationYear = 1960,
-                        Price = 10,
-                        Quantity = 50,
-                        ImagePath = "/images/mockingbird.jpg",
-                        Publisher = publishers[0],
+                        PublicationYear = 2011,
+                        Price = 14.99m,
+                        Quantity = 8,
+                        ImagePath = "https://images-na.ssl-images-amazon.com/images/P/0763655988.01._SX180_SCLZZZZZZZ_.jpg",
+                        Publisher = publishers[1],
                         Authors = new List<Author> { authors[1] }
                     }
                 };
