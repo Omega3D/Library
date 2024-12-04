@@ -1,5 +1,4 @@
 ﻿using API.Data.Entities;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace API.Data
@@ -10,54 +9,68 @@ namespace API.Data
         {
             if (!context.Books.Any())
             {
-                var authors = new List<Author>
+                // Додати видавця
+                var publisher = new Publisher
                 {
-                    new Author { FirstName = "Adam", LastName = "Kay" },
-                    new Author { FirstName = "Daniel", LastName = "Kahneman" }
+                    Name = "Tech Books Publishing"
                 };
 
-                var publishers = new List<Publisher>
+                // Додати авторів
+                var author1 = new Author
                 {
-                    new Publisher { Country = "UK" },
-                    new Publisher { Country = "USA" }
+                    FirstName = "John",
+                    LastName = "Doe"
                 };
 
-                var books = new List<Book>
+                var author2 = new Author
                 {
-                    new Book
-                    {
-                        Title = "This is Going to Hurt",
-                        Description = "A hilarious and heartbreaking collection of stories from a former doctor.",
-                        ISBN = "9781509858637",
-                        Genre = "Biography",
-                        Type = "Paperback",
-                        PublicationYear = 2017,
-                        Price = 15.99m,
-                        Quantity = 10,
-                        ImagePath = "https://images-na.ssl-images-amazon.com/images/P/8874713290.01._SX180_SCLZZZZZZZ_.jpg",
-                        Publisher = publishers[0],
-                        Authors = new List<Author> { authors[0] }
-                    },
-                    new Book
-                    {
-                        Title = "Thinking, Fast and Slow",
-                        Description = "An exploration of the human mind and how it makes decisions.",
-                        ISBN = "9780141033570",
-                        Genre = "Psychology",
-                        Type = "Paperback",
-                        PublicationYear = 2011,
-                        Price = 14.99m,
-                        Quantity = 8,
-                        ImagePath = "https://images-na.ssl-images-amazon.com/images/P/0763655988.01._SX180_SCLZZZZZZZ_.jpg",
-                        Publisher = publishers[1],
-                        Authors = new List<Author> { authors[1] }
-                    }
+                    FirstName = "Jane",
+                    LastName = "Smith"
                 };
 
-                context.Authors.AddRange(authors);
-                context.Publishers.AddRange(publishers);
-                context.Books.AddRange(books);
+                // Додати книги
+                var book1 = new Book
+                {
+                    Title = "Learning C#",
+                    Description = "A comprehensive guide to learning C# programming.",
+                    Language = "English",
+                    ISBN = "123-4567890123",
+                    Genre = "Programming",
+                    Type = "Hardcover",
+                    PublicationYear = 2021,
+                    Price = 39.99m,
+                    Quantity = 10,
+                    ImagePath = "images/learning-csharp.jpg",
+                    Publisher = publisher
+                };
 
+                var book2 = new Book
+                {
+                    Title = "Mastering Entity Framework",
+                    Description = "Advanced techniques for working with Entity Framework.",
+                    Language = "English",
+                    ISBN = "987-6543210987",
+                    Genre = "Database",
+                    Type = "Paperback",
+                    PublicationYear = 2020,
+                    Price = 29.99m,
+                    Quantity = 15,
+                    ImagePath = "images/mastering-ef.jpg",
+                    Publisher = publisher
+                };
+
+                // Зв'язки між книгами та авторами
+                book1.BookAuthors.Add(new Book_Author { Book = book1, Author = author1 });
+                book1.BookAuthors.Add(new Book_Author { Book = book1, Author = author2 });
+
+                book2.BookAuthors.Add(new Book_Author { Book = book2, Author = author1 });
+
+                // Додати дані в контекст
+                context.Publishers.Add(publisher);
+                context.Authors.AddRange(author1, author2);
+                context.Books.AddRange(book1, book2);
+
+                // Зберегти зміни
                 context.SaveChanges();
             }
         }

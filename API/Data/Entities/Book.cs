@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace API.Data.Entities
 {
@@ -19,7 +20,7 @@ namespace API.Data.Entities
         public int Quantity { get; set; }
         public string ImagePath { get; set; } = string.Empty;
 
-        public ICollection<Author> Authors { get; set; } = new List<Author>();
+        public ICollection<Book_Author> BookAuthors { get; set; } = new List<Book_Author>();
 
         [ForeignKey("Publisher")]
         public int PublisherId { get; set; }

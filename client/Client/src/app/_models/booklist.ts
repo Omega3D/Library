@@ -3,5 +3,5 @@ export interface BookList{
     title: string,
     genre: string,
     price: number,
-    imagePath: string
+    imagePath: string,
 }

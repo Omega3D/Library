@@ -1,11 +1,12 @@
 ﻿namespace API.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<T> where T : class
     {
-        Task<TEntity?> GetByIdAsync(int id);
-        Task<IEnumerable<TEntity>> GetAllAsync();
-        Task AddAsync(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T?> GetByIdAsync(int id);
+        Task<T> AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task<T> GetByName(string name);
+        Task DeleteAsync(T entity);
     }
 }

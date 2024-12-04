@@ -31,6 +31,16 @@ namespace API.Data
             modelBuilder.Entity<OrderItem>()
                 .Property(oi => oi.Price)
                 .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Book_Author>()
+                .HasOne(b => b.Book)
+                .WithMany(ba => ba.BookAuthors)
+                .HasForeignKey(bi => bi.BookId);
+
+            modelBuilder.Entity<Book_Author>()
+                .HasOne(b => b.Author)
+                .WithMany(ba => ba.Book_Authors)
+                .HasForeignKey(bi => bi.AuthorId);
         }
 
 
@@ -42,5 +52,6 @@ namespace API.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Shipper> Shippers { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Book_Author> Books_Authors { get; set; }
     }
 }
