@@ -19,7 +19,7 @@ namespace API.Data.Entities
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public string ImagePath { get; set; } = string.Empty;
-
+        [JsonIgnore]
         public ICollection<Book_Author> BookAuthors { get; set; } = new List<Book_Author>();
 
         [ForeignKey("Publisher")]

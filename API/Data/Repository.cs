@@ -38,11 +38,6 @@ namespace API.Data
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<T> GetByName(string name)
-        {
-            return await _dbSet.FindAsync(name);
-        }
-
         public async Task UpdateAsync(T entity)
         {
             _dbSet.Attach(entity);

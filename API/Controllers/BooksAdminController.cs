@@ -7,12 +7,10 @@ namespace API.Controllers
 {
     public class BooksAdminController : BaseContoller
     {
-        private readonly IBooksManagementService _booksManagementService;
         private readonly IBooksAdminService _booksAdminService;
 
-        public BooksAdminController(IBooksManagementService booksManagementService, IBooksAdminService booksAdminService)
+        public BooksAdminController(IBooksAdminService booksAdminService)
         {
-            _booksManagementService = booksManagementService;
             _booksAdminService = booksAdminService;
         }
 

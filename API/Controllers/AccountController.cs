@@ -33,6 +33,8 @@ namespace API.Controllers
 
             string username = registerDto.Username ?? GenerateUniqueUsername(registerDto.EmailAddress);
 
+            if(username == null || username == string.Empty) GenerateUniqueUsername(registerDto.EmailAddress);
+
             if (await _context.AppUsers.AnyAsync(u => u.Username == username))
                 throw new Exception("Username already exists");
 
@@ -42,7 +44,7 @@ namespace API.Controllers
 
             var appUser = new AppUser
             {
-                Username = username,
+                Username = username!,
                 EmailAddress = registerDto.EmailAddress,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,

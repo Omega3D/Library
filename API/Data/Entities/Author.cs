@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace API.Data.Entities
 {
@@ -12,6 +13,7 @@ namespace API.Data.Entities
 
         [NotMapped]
         public string FullName => $"{FirstName} {LastName}";
+        [JsonIgnore]
         public ICollection<Book_Author> Book_Authors { get; set; } = new List<Book_Author>();
     }
 }
