@@ -33,16 +33,22 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Author>> CreateAuthor([FromBody] AuthorCreateDto authorDto)
+        public async Task<ActionResult<Author>> CreateAuthors([FromBody] AuthorsCreateDto authorsDto)
         {
-            var author = new Author
+            if (authorsDto.Authors == null || !authorsDto.Authors.Any())
             {
-                FirstName = authorDto.FirstName,
-                LastName = authorDto.LastName
-            };
+                return BadRequest("No authors provided");
+            }
 
-            var createdAuthor = await _authorsAdminService.CreateAuthor(author);
-            return Ok(createdAuthor);
+            var authors = authorsDto.Authors.Select(dto => new Author
+            {
+                FirstName = dto.FirstName,
+                LastName = dto.LastName
+            }).ToList();
+
+            var createdAuthors = await _authorsAdminService.CreateAuthors(authors);
+
+            return Ok(createdAuthors);
         }
 
         [HttpPut("{id}")]

@@ -30,14 +30,20 @@ namespace API.Services
             return author;
         }
 
-        public async Task<Author> CreateAuthor(Author author)
+        public async Task<List<Author>> CreateAuthors(List<Author> authors)
         {
-            if (string.IsNullOrWhiteSpace(author.FirstName) || string.IsNullOrWhiteSpace(author.LastName))
-                throw new Exception("First Name and Last Name must be provided!");
+            if (authors == null || !authors.Any())
+                throw new Exception("Author list cannot be empty!");
 
-            var newAuthor = await _authorRepository.AddAsync(author);
+            if (authors.Any(a => string.IsNullOrWhiteSpace(a.FirstName) || string.IsNullOrWhiteSpace(a.LastName)))
+                throw new Exception("Each author must have a First Name and Last Name!");
 
-            return newAuthor;
+            foreach (var author in authors)
+            {
+                await _authorRepository.AddAsync(author);
+            }
+
+            return authors;
         }
 
         public async Task UpdateAuthor(Author author)

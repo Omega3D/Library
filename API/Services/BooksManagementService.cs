@@ -29,14 +29,12 @@ namespace API.Services
 
         public async Task<Book> CreateBookWithDetails(CreateBookWithDetailsDto dto)
         {
-            // Перевірка існування видавця
             var publisher = await _publisherRepository.GetByIdAsync(dto.PublisherId);
             if (publisher == null)
             {
                 throw new Exception("No publisher found");
             }
 
-            // Отримання авторів за ідентифікаторами
             var authors = await _context.Authors
                 .Where(a => dto.AuthorIds.Contains(a.AuthorId))
                 .ToListAsync();
@@ -65,7 +63,6 @@ namespace API.Services
                     Author = author
                 }).ToList()
             };
-
             await _bookRepository.AddAsync(book);
 
             return book;

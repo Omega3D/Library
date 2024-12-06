@@ -6,7 +6,7 @@ namespace API.Interfaces
     {
         Task<IEnumerable<Author>> GetAuthorsAsync();
         Task<Author> GetAuthorById(int id);
-        Task<Author> CreateAuthor(Author author);
+        Task<List<Author>> CreateAuthors(List<Author> authors);
         Task UpdateAuthor(Author author);
         Task DeleteAuthor(Author author);
     }
