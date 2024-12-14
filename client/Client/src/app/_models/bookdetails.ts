@@ -3,6 +3,7 @@ export interface BookDetails{
     title: string;
     description: string;
     isbn: string;
+    language: string,
     genre: string;
     type: string;
     publicationYear: number;

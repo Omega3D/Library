@@ -6,5 +6,7 @@ namespace API.Interfaces
     {
         Task<IEnumerable<BookSummaryDto>> GetBookSummariesAsync();
         Task<BookDetailDto?> GetBookDetailAsync(int bookId);
+        Task<IEnumerable<PublishersDto>> GetPublishersAsync();
+        Task<IEnumerable<BookSummaryDto>> GetBooksByPublisher(string name);
     }
 }

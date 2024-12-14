@@ -47,5 +47,41 @@ namespace API.Services
                 ImagePath = b.ImagePath
             }).FirstOrDefaultAsync();
         }
+
+        public async Task<IEnumerable<PublishersDto>> GetPublishersAsync()
+        {
+            var publishers = await _context.Publishers
+                .Select(p => new PublishersDto
+                {
+                    Name = p.Name,
+                }).ToListAsync();
+
+            return publishers;
+        }
+
+        public async Task<IEnumerable<BookSummaryDto>> GetBooksByPublisher(string publisher)
+        {
+            try
+            {
+                var filteredBooks = await _context.Books
+                .Where(book => book.Publisher!.Name == publisher)
+                .Select(b => new BookSummaryDto
+                {
+                    BookId = b.BookId,
+                    Title = b.Title,
+                    Genre = b.Genre,
+                    Price = b.Price,
+                    ImagePath = b.ImagePath
+                })
+                .ToListAsync();
+
+                return filteredBooks;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching books by publisher", ex);
+            }
+
+        }
     }
 }

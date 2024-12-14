@@ -1,0 +1,22 @@
+.main-container {
+    display: flex;
+    height: calc(100vh - 60px); /* Повна висота екрану, враховуючи навігацію */
+    gap: 20px; /* Відстань між секціями */
+  }
+  
+  .filter-section {
+    flex: 0 0 15%; /* Фільтрація займає рівно 30% ширини */
+    padding: 10px;
+    background: #f8f9fa;
+    border-right: 1px solid #ddd;
+    height: 100%;
+  }
+  
+  .books-list-section {
+    flex: 0 0 70%; /* Список займає рівно 70% ширини */
+    padding: 10px;
+    background: #fff;
+    height: 100%;
+    overflow-y: auto;
+  }
+  

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">BookStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Основний навігаційний меню + пошукова форма -->
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+      
+      <!-- Список навігації -->
+      <div class="d-flex justify-content-center align-items-center">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/aboutus" routerLinkActive="active">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/authors" routerLinkActive="active">Authors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/publishers" routerLinkActive="active">Publishers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/storesandcontacts" routerLinkActive="active">Stores and contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/shippingandpayment" routerLinkActive="active">Shipping and payment</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Пошукова форма з відступом -->
+      <div class="d-flex align-items-center ms-3">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+
+      <!-- Автентифікація -->
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="isLoggedIn; else guest">
+          <span class="me-2">Welcome, username</span>
+          <button class="btn btn-danger me-2">Logout</button>
+        </ng-container>
+        <ng-template #guest>
+          <button class="btn btn-primary me-2" routerLink="/login">Sign In</button>
+          <button class="btn btn-primary" routerLink="/register">Sign Up</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>

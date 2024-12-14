@@ -1,0 +1,24 @@
+<div class="books-filter-sidebar">
+  <div class="section-header bg-secondary text-white px-3 py-2 rounded shadow-sm">
+    <p class="h5 m-0">Publishers:</p>
+  </div>
+
+  <div class="list-group">
+    <button 
+      class="list-group-item list-group-item-action mt-2" 
+      [class.active]="selectedPublisher === ''"
+      (click)="clearFilter()"
+    >
+      Усі видавці
+    </button>
+
+    <button 
+      *ngFor="let publisher of publishers" 
+      class="list-group-item list-group-item-action mt-2" 
+      [class.active]="selectedPublisher === publisher.name"
+      (click)="onPublisherSelect(publisher.name)"
+    >
+      {{ publisher.name }}
+    </button>
+  </div>
+</div>

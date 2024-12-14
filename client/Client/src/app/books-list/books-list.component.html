@@ -1,11 +1,18 @@
-<h1>Books List</h1>
-<div class="card-container">
-  <div class="card" *ngFor="let book of books">
-    <img [src]="book.imagePath" alt="{{book.title}}" class="book-image" />
-    <div class="card-content">
-      <h3 class="book-title">{{book.title}}</h3>
-      <p class="book-genre">{{book.genre}}</p>
-      <p class="book-price">{{book.price | currency}}</p>
+<div class="container">
+  <div class="row">
+    <div *ngIf="isLoading" class="text-center">
+      <p>Loading books...</p>
+    </div>
+    
+    <div *ngIf="!isLoading" class="card-container">
+      <div class="card" *ngFor="let book of filteredBooks">
+        <img [src]="book.imagePath" alt="{{book.title}}" class="book-image" />
+        <div class="card-content">
+          <h3 class="book-title">{{book.title}}</h3>
+          <p class="book-genre">{{book.genre}}</p>
+          <p class="book-price">{{book.price | currency}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -30,5 +30,21 @@ namespace API.Controllers
             
             return Ok(book);
         }
+
+        [HttpGet("publishers")]
+        public async Task<ActionResult<IEnumerable<PublishersDto>>> GetPublishers()
+        {
+            var publishers = await _booksService.GetPublishersAsync();
+
+            return Ok(publishers);
+        }
+
+        [HttpGet("filterpublishers")]
+        public async Task<ActionResult<IEnumerable<BookSummaryDto>>> GetBooksByPublisher([FromQuery] string publisher)
+        {
+            var booksByPublisher = await _booksService.GetBooksByPublisher(publisher);
+
+            return Ok(booksByPublisher);
+        }
     }
 }
