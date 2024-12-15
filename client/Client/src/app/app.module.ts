@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooksDetailComponent } from './books-detail/books-detail.component';
 import { NavComponent } from './nav/nav.component';
 import { BooksFilterComponent } from './books-filter/books-filter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -15,16 +19,19 @@ import { BooksFilterComponent } from './books-filter/books-filter.component';
     BooksListComponent,
     BooksDetailComponent,
     NavComponent,
-    BooksFilterComponent
+    BooksFilterComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

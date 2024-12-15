@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-center align-items-center main-container vh-100">
+    <div class="register-card shadow p-4 rounded" style="max-width: 500px; width: 100%;">
+      <h3 class="text-center mb-4">Register</h3>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- First Name -->
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            formControlName="firstName"
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="Enter your first name"
+          />
+          <small *ngIf="registerForm.controls['firstName'].dirty && registerForm.controls['firstName'].hasError('required')" class="text-danger">*First name is required</small>
+        </div>
+  
+        <!-- Last Name -->
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            formControlName="lastName"
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Enter your last name"
+          />
+          <small *ngIf="registerForm.controls['lastName'].dirty && registerForm.controls['lastName'].hasError('required')" class="text-danger">*Last name is required</small>
+        </div>
+
+        <!--Username-->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Enter your last name"
+            />
+            <small *ngIf="registerForm.controls['username'].dirty && registerForm.controls['username'].hasError('required')" class="text-danger">*Username is required</small>
+          </div>
+  
+        <!-- Phone -->
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input
+            formControlName="phone"
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="Enter your phone number"
+          />
+          <small *ngIf="registerForm.controls['phone'].dirty && registerForm.controls['phone'].hasError('required')" class="text-danger">*Phone is required</small>
+          <small *ngIf="registerForm.controls['phone'].dirty && registerForm.controls['phone'].hasError('pattern')" class="text-danger">*Invalid phone number</small>
+        </div>
+  
+        <!-- City -->
+        <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <input
+            formControlName="city"
+            type="text"
+            class="form-control"
+            id="city"
+            placeholder="Enter your city"
+          />
+          <small *ngIf="registerForm.controls['city'].dirty && registerForm.controls['city'].hasError('required')" class="text-danger">*City is required</small>
+        </div>
+  
+        <!-- Postal Code -->
+        <div class="mb-3">
+          <label for="postalCode" class="form-label">Postal Code</label>
+          <input
+            formControlName="postalCode"
+            type="text"
+            class="form-control"
+            id="postalCode"
+            placeholder="Enter your postal code"
+          />
+          <small *ngIf="registerForm.controls['postalCode'].dirty && registerForm.controls['postalCode'].hasError('required')" class="text-danger">*Postal Code is required</small>
+          <small *ngIf="registerForm.controls['postalCode'].dirty && registerForm.controls['postalCode'].hasError('pattern')" class="text-danger">*Invalid Postal Code</small>
+        </div>
+  
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            formControlName="emailAddress"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+          />
+          <small *ngIf="registerForm.controls['emailAddress'].dirty && registerForm.controls['emailAddress'].hasError('required')" class="text-danger">*Email is required</small>
+          <small *ngIf="registerForm.controls['emailAddress'].dirty && registerForm.controls['emailAddress'].hasError('emailAddress')" class="text-danger">*Invalid Email</small>
+        </div>
+  
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+          />
+          <small *ngIf="registerForm.controls['password'].dirty && registerForm.controls['password'].hasError('required')" class="text-danger">*Password is required</small>
+          <small *ngIf="registerForm.controls['password'].dirty && registerForm.controls['password'].hasError('minlength')" class="text-danger">*Password must be at least 6 characters</small>
+        </div>
+  
+        <!-- Submit -->
+        <button [disabled]="registerForm.invalid" type="submit" class="btn btn-success w-100">Register</button>
+        <div class="text-center mt-3">
+          <a routerLink="/login" class="link-primary">Already have an account? Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
