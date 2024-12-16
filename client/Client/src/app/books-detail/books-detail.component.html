@@ -1,1 +1,38 @@
-<p>books-detail works!</p>
+<div class="container my-5">
+  <!-- Стан завантаження -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3">Завантаження деталей книги...</p>
+  </div>
+
+  <!-- Основний контент книги -->
+  <div *ngIf="!isLoading && bookDetails" class="row g-4">
+    <!-- Зображення книги -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 bg-light border-secondary rounded">
+        <img [src]="bookDetails.imagePath" alt="{{ bookDetails.title }}" class="img-fluid shadow-sm" />
+      </div>
+    </div>
+
+    <!-- Деталі книги -->
+    <div class="col-md-8">
+      <div class="card shadow-sm bg-light border-secondary rounded h-100 p-3">
+        <h2 class="fw-bold mb-3">{{ bookDetails.title }}</h2>
+        <p><strong>Description:</strong> {{ bookDetails.description }}</p>
+        <p><strong>ISBN:</strong> {{ bookDetails.isbn }}</p>
+        <p><strong>Language:</strong> {{ bookDetails.language }}</p>
+        <p><strong>Genre:</strong> {{ bookDetails.genre }}</p>
+        <p><strong>Type:</strong> {{ bookDetails.type }}</p>
+        <p><strong>Publication Year:</strong> {{ bookDetails.publicationYear }}</p>
+        <p><strong>Price:</strong> {{ bookDetails.price | currency }}</p>
+        <p>
+          <span *ngIf="bookDetails.quantity > 0" class="text-success"> В наявності</span>
+          <span *ngIf="bookDetails.quantity <= 0" class="text-danger">Немає в наявності</span>
+        </p>
+        <button class="btn btn-primary mt-3">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>

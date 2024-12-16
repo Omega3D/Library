@@ -1,5 +1,5 @@
 export interface BookList{
-    id: number,
+    bookId: number,
     title: string,
     genre: string,
     price: number,

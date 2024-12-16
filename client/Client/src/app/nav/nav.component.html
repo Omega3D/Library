@@ -41,6 +41,9 @@
       <!-- Автентифікація -->
       <div class="d-flex align-items-center">
         <ng-container *ngIf="isLoggedIn; else guest">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-cart me-2" style="font-size: 24px;"></i>
+          </div>          
           <span class="me-2">Welcome, {{ username }}</span>
           <button class="btn btn-danger me-2" (click)="logout()">Logout</button>
         </ng-container>

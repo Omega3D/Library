@@ -3,6 +3,7 @@ import { BooksService } from '../_services/books.service';
 import { BooksStateService } from '../_services/books-state.service';
 import { BookList } from '../_models/booklist';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-list',
@@ -17,7 +18,8 @@ export class BooksListComponent implements OnInit {
 
   constructor(
     private booksService: BooksService,
-    private booksStateService: BooksStateService
+    private booksStateService: BooksStateService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,16 @@ export class BooksListComponent implements OnInit {
       }
     );
   }
+
+  onBookClick(bookId: number | undefined): void {
+    if (!bookId) {
+      console.error('Book ID is undefined');
+      return;
+    }
+    this.router.navigate(['/book', bookId]);
+  }
+  
+  
 
   ngOnDestroy(): void {
     this.filterSubscription.unsubscribe();

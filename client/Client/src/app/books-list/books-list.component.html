@@ -5,7 +5,7 @@
     </div>
     
     <div *ngIf="!isLoading" class="card-container">
-      <div class="card" *ngFor="let book of filteredBooks">
+      <div class="card" *ngFor="let book of filteredBooks" (click)="onBookClick(book.bookId)">
         <img [src]="book.imagePath" alt="{{book.title}}" class="book-image" />
         <div class="card-content">
           <h3 class="book-title">{{book.title}}</h3>
