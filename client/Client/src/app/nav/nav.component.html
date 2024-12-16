@@ -41,14 +41,14 @@
       <!-- Автентифікація -->
       <div class="d-flex align-items-center">
         <ng-container *ngIf="isLoggedIn; else guest">
-          <span class="me-2">Welcome, username</span>
+          <span class="me-2">Welcome, {{ username }}</span>
           <button class="btn btn-danger me-2" (click)="logout()">Logout</button>
         </ng-container>
         <ng-template #guest>
           <button class="btn btn-primary me-2" routerLink="/login">Sign In</button>
           <button class="btn btn-primary" routerLink="/register">Sign Up</button>
         </ng-template>
-      </div>
+      </div>            
     </div>
   </div>
 </nav>
