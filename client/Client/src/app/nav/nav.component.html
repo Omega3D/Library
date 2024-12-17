@@ -44,7 +44,32 @@
           <div class="d-flex align-items-center">
             <i class="bi bi-cart me-2" style="font-size: 24px;"></i>
           </div>          
-          <span class="me-2">Welcome, {{ username }}</span>
+          <div class="dropdown">
+            <button 
+              class="btn dropdown-toggle" 
+              type="button" 
+              id="dropdownMenuButton" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false" 
+              (click)="loadCustomerDetails()">
+              Welcome, {{ username }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li *ngIf="isCustomerLoading">Loading...</li>
+              <li *ngIf="!isCustomerLoading && customer">
+                <div>
+                  <li class="dropdown-item"><strong>Firstname:</strong> {{ customer?.firstname }}</li>
+                  <li class="dropdown-item"><strong>Lastname:</strong> {{ customer?.lastname }}</li>
+                  <li class="dropdown-item"><strong>Phone:</strong> {{ customer?.phone }}</li>
+                  <li class="dropdown-item"><strong>City:</strong> {{ customer?.city }}</li>
+                  <li class="dropdown-item"><strong>Postalcode:</strong> {{ customer?.postalcode }}</li>
+                </div>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item text-danger" (click)="logout()">Logout</button></li>
+              <li *ngIf="!isCustomerLoading && !customer">No customer data available.</li>
+            </ul>
+          </div>
+          
           <button class="btn btn-danger me-2" (click)="logout()">Logout</button>
         </ng-container>
         <ng-template #guest>

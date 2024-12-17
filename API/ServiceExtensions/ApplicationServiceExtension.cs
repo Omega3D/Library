@@ -18,6 +18,7 @@ namespace API.Extensions
             services.AddScoped<IBooksManagementService, BooksManagementService>();
             services.AddScoped<IPublishersAdminService, PublishersAdminService>();
             services.AddScoped<IAuthorsAdminService, AuthorsAdminService>();
+            services.AddScoped<ICustomerService, CustomerService>();
 
             return services;
         }
