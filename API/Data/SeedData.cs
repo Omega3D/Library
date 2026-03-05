@@ -7,7 +7,7 @@ namespace API.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            if (!context.Books.Any())
+            if (!context.Books.Any(x => x.Title == "Tech Books Publishing" || x.Title == "Learning C#"))
             {
                 // Додати видавця
                 var publisher = new Publisher

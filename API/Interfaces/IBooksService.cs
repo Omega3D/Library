@@ -8,5 +8,5 @@ namespace API.Interfaces
         Task<BookDetailDto?> GetBookDetailAsync(int bookId);
         Task<IEnumerable<PublishersDto>> GetPublishersAsync();
         Task<IEnumerable<BookSummaryDto>> GetBooksByPublisher(string name);
-    }
+    }    
 }
